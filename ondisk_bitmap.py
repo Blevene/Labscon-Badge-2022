@@ -1,13 +1,23 @@
 import board
 import displayio
+from digitalio import DigitalInOut, Direction, Pull
 from adafruit_st7789 import ST7789
 import gc
+
+#Initialize Switches!
+switchL = DigitalInOut(board.D6)
+switchL.direction = Direction.INPUT
+switchL.pull = Pull.UP
+
+switchR = DigitalInOut(board.D5)
+switchR.direction = Direction.INPUT
+switchR.pull = Pull.UP
 
 #memory is kind of at a premium so lets make sure its not FUBAR
 gc.collect()
 
 spi = board.SPI()
-    
+
 # Release any resources currently in use for the displays
 displayio.release_displays()
 
