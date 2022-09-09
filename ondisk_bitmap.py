@@ -20,6 +20,7 @@ switchR_d = Debouncer(switchR)
 # memory is kind of at a premium so lets make sure its not FUBAR
 gc.collect()
 
+# initalize our SPI connection
 spi = board.SPI()
 
 # Release any resources currently in use for the displays
@@ -37,7 +38,7 @@ display_bus = displayio.FourWire(
 # instantiate the display object itself
 display = ST7789(display_bus, width=240, height=240, rowstart=80)
 
-# supply the select_image var
+# pass name of the selected image and we will render it in the loop
 def display_bitmap(image_index):
     while logo_group:
         logo_group.pop()
@@ -50,25 +51,22 @@ def display_bitmap(image_index):
 # Create a Group to hold the Logo
 logo_group = displayio.Group()
 
-# Add the TileGrid to the Group
-#logo_group.append(tile_grid)
-
 # Add the Group to the Display
 display.show(logo_group)
-# --------------------------------------------------------
+
 # Get a list of files in /bmp directory
 path = "/bmp"
 bmp_list = os.listdir(path)
-print(bmp_list)
+#[Debug] print(bmp_list)
 max_size = len(bmp_list) - 1
-print(max_size)
+#[Debug] print(max_size)
 
 # write a function to push
 def shift_image(counter):
     return bmp_list[counter]
 
 
-# initialize our variable to hold button press states
+# initialize our variables to hold button press states
 btn_value = 0
 state_change = False
 
@@ -78,27 +76,22 @@ while True:
     switchL_d.update()
     switchR_d.update()
 
+    #Check for Left Switch press
     if switchL_d.fell:
         btn_value -= 1
         state_change = True
 
+    #Check for Right switch press
     if switchR_d.fell:
         btn_value += 1
         state_change = True
 
+    #make sure we don't go out of the range of our list index and also setup for looping around
     if btn_value > max_size or btn_value < -1:
         btn_value = 0
 
     if state_change == True:
-        state_change = False  # reset the state change
+        state_change = False  # reset the state so we dont do this over and over but only on a button press!
         select_image = shift_image(btn_value)
         print(select_image)
         display_bitmap(select_image)
-
-    # make sure we dont go above the length of our list
-    # we also will let the buttons scroll around
-    # if btn_value > (len(bmp_list) - 1) or btn_value < -1:
-    #    btn_value = 0
-
-    # select_image = shift_image(btn_value)
-    # print(select_image)
