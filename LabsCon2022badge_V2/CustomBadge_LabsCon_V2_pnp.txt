@@ -1,0 +1,30 @@
+*Pick And Place List
+*Company=
+*Author=
+*eMail=
+*
+*Project=CustomBadge_LabsCon_V2
+*Date=07:40:40
+*CreatedBy=Fritzing 0.9.10b.2022-07-01.CD-2134-0-40d23c29
+*
+*
+*Coordinates in mm, always center of component
+*Origin 0/0=Lower left corner of PCB
+*Rotation in degree (0-360, math. pos.)
+*
+*No;Value;Package;X;Y;Rotation;Side;Name
+1;;;51.8451;-13.5629;90;Bottom;MX2
+2;;;83.508;-63.6269;0;Bottom;Hole12
+3;;;14.0498;-40.453;90;Bottom;Feather M0 Exp
+4;;;83.5068;-26.8574;0;Bottom;Hole14
+5;;;44.7396;-26.8566;0;Bottom;Hole13
+6;;;5.16254;-17.4267;0;Bottom;Hole8
+7;;;22.9261;-17.3683;0;Bottom;Hole7
+8;;;44.7396;-63.6971;0;Bottom;Hole11
+9;;;74.7051;-13.5629;90;Bottom;MX1
+10;;;46.6344;-38.6056;0;Bottom;Via8
+11;;;5.17171;-63.1018;0;Bottom;Hole10
+12;;;37.4904;-36.1672;0;Bottom;Via7
+13;;;22.9261;-63.0628;0;Bottom;Hole9
+14;;;21.4433;-2.3969;0;Bottom;TXT1
+15;;;64.102;-45.2777;0;Bottom;1.54 ST7789
