@@ -87,7 +87,7 @@ while True:
         state_change = True
 
     #make sure we don't go out of the range of our list index and also setup for looping around
-    if btn_value > max_size or btn_value < -1:
+    if btn_value > max_size or btn_value < -max_size
         btn_value = 0
 
     if state_change == True:
