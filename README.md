@@ -10,9 +10,9 @@ Make sure to rename the .py file to code.py or main.py
 1) Adafruit Feather M0 Express - ATSAMD21 Cortex M0: https://www.adafruit.com/product/3403
 2) Adafruit 1.54" 240x240 Wide Angle TFT LCD Display with MicroSD - ST7789: https://www.adafruit.com/product/3787
 
-### Additional non-builtin Libraries Used 
+### Additional non-builtin Libraries Used: 
 
-(these must be in the lib folder on the mounted CIRCUITPYTHON drive):
+(these must be in the lib folder on the mounted CIRCUITPYTHON drive)
 
 - adafruit_debouncer
 - adafruit_ticks
