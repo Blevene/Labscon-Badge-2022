@@ -61,7 +61,7 @@ bmp_list = os.listdir(path)
 max_size = len(bmp_list) - 1
 #[Debug] print(max_size)
 
-# write a function to push
+# Takes our button value and uses that as an index for our bitmap last
 def shift_image(counter):
     return bmp_list[counter]
 
@@ -93,5 +93,5 @@ while True:
     if state_change == True:
         state_change = False  # reset the state so we dont do this over and over but only on a button press!
         select_image = shift_image(btn_value)
-        print(select_image)
+        #{Debug] print(select_image)
         display_bitmap(select_image)
