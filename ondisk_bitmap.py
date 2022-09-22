@@ -5,6 +5,22 @@ from digitalio import DigitalInOut, Direction, Pull
 from adafruit_st7789 import ST7789
 from adafruit_debouncer import Debouncer
 import gc
+import analogio
+
+#On Startup, print Vbat Voltage to Serial
+'''
+ LiPoly batteries are 'maxed out' at 4.2V and stick around 3.7V for much of the battery life, 
+ then slowly sink down to 3.2V or so before the protection circuitry cuts it off.
+ Courtesy of AdaFruit - https://learn.adafruit.com/adafruit-feather-m0-express-designed-for-circuit-python-circuitpython/power-management
+'''
+vbat_voltage = analogio.AnalogIn(board.D9)
+
+def get_voltage(pin):
+    return (pin.value * 3.3) / 65536 * 2
+
+battery_voltage = get_voltage(vbat_voltage)
+print("VBat voltage: {:.2f}".format(battery_voltage))
+
 
 # Initialize Switches!
 switchL = DigitalInOut(board.D6)
@@ -20,7 +36,6 @@ switchR_d = Debouncer(switchR)
 # memory is kind of at a premium so lets make sure its not FUBAR
 gc.collect()
 
-# initalize our SPI connection
 spi = board.SPI()
 
 # Release any resources currently in use for the displays
@@ -36,9 +51,12 @@ display_bus = displayio.FourWire(
 )
 
 # instantiate the display object itself
-display = ST7789(display_bus, width=240, height=240, rowstart=80)
 
-# pass name of the selected image and we will render it in the loop
+display = ST7789(display_bus, width=240, height=240, rowstart=80)
+#why does this make things so SLOW???
+#display.rotation = 270
+
+# supply the select_image var
 def display_bitmap(image_index):
     while logo_group:
         logo_group.pop()
@@ -51,22 +69,25 @@ def display_bitmap(image_index):
 # Create a Group to hold the Logo
 logo_group = displayio.Group()
 
+# Add the TileGrid to the Group
+#logo_group.append(tile_grid)
+
 # Add the Group to the Display
 display.show(logo_group)
-
+# --------------------------------------------------------
 # Get a list of files in /bmp directory
 path = "/bmp"
 bmp_list = os.listdir(path)
-#[Debug] print(bmp_list)
+print(bmp_list)
 max_size = len(bmp_list) - 1
-#[Debug] print(max_size)
+print(max_size)
 
-# Takes our button value and uses that as an index for our bitmap last
+# write a function to push
 def shift_image(counter):
     return bmp_list[counter]
 
 
-# initialize our variables to hold button press states
+# initialize our variable to hold button press states
 btn_value = 0
 state_change = False
 
@@ -76,22 +97,27 @@ while True:
     switchL_d.update()
     switchR_d.update()
 
-    #Check for Left Switch press
     if switchL_d.fell:
         btn_value -= 1
         state_change = True
 
-    #Check for Right switch press
     if switchR_d.fell:
         btn_value += 1
         state_change = True
 
-    #make sure we don't go out of the range of our list index and also setup for looping around
-    if btn_value > max_size or btn_value < -max_size
+    if btn_value > max_size or btn_value < -max_size:
         btn_value = 0
 
     if state_change == True:
-        state_change = False  # reset the state so we dont do this over and over but only on a button press!
+        state_change = False  # reset the state change
         select_image = shift_image(btn_value)
-        #{Debug] print(select_image)
+        print(select_image)
         display_bitmap(select_image)
+
+    # make sure we dont go above the length of our list
+    # we also will let the buttons scroll around
+    # if btn_value > (len(bmp_list) - 1) or btn_value < -1:
+    #    btn_value = 0
+
+    # select_image = shift_image(btn_value)
+    # print(select_image)
