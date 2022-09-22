@@ -5,7 +5,19 @@
 
 ## Must use INDEXED bmp files to render on the TFT!
 
+## You must add a CircuitPython bootloader to your AdaFruit Feather
+
+## Instructions
 Make sure to rename the .py file to code.py or main.py 
+
+You can use most AdaFruit Feather form factor micro-controllers but M0 Express is probably the MINIMUM. 
+
+On your CIRCUITPY drive you need the following folders
+
+1) lib -> this contains third party libraries required to make things work (if you use a non-express board from Adafruit, you may need more libs in this folder)
+2) bmp -> this is where your INDEXED bmp files live :-) Use GIMP to convert files to Indexed BMP format. NOTE: The screen is only 240 x 240
+3) root folder of the drive should have "code.py"
+
 
 ### Parts used:
 
