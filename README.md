@@ -1,5 +1,7 @@
 # Labscon-Badge-2022
 
+![alt text](https://github.com/Blevene/Labscon-Badge-2022/blob/main/images/Badge_Live.jpg?raw=true)
+
 
 ## Must use INDEXED bmp files to render on the TFT!
 
