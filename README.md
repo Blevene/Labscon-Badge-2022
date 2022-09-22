@@ -15,8 +15,8 @@ Make sure to rename the .py file to code.py or main.py
 
 Optional Parts:
 
-1) LiPoly Battery - https://www.adafruit.com/product/1578
-2) Tactile On/Off Switch w/Leads - https://www.adafruit.com/product/1092 -> Solder this to EN + Ground on the back of the PCB after soldering the Feather on and you have on/off capabilities!
+1) LiPoly Battery - https://www.adafruit.com/product/1578 -> I used doublesided tape to secure this to the back of the PCB.
+2) Tactile On/Off Switch w/Leads - https://www.adafruit.com/product/1092 -> Solder this to EN + Ground Pins on the back of the PCB after soldering the Feather on and you have on/off capabilities!
 
 ### Additional non-builtin Libraries Used: 
 
