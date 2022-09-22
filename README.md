@@ -5,6 +5,8 @@
 
 ## Must use INDEXED bmp files to render on the TFT!
 
+Good tutorial here (though it goes into a bunch of other stuff we don't care about): https://learn.adafruit.com/creating-your-first-tilemap-game-with-circuitpython/indexed-bmp-graphics
+
 ## You must add a CircuitPython bootloader to your AdaFruit Feather
 
 ## Instructions
