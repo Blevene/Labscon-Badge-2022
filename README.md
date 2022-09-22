@@ -26,6 +26,8 @@ On your CIRCUITPY drive you need the following folders
 1) Adafruit Feather M0 Express - ATSAMD21 Cortex M0: https://www.adafruit.com/product/3403
 2) Adafruit 1.54" 240x240 Wide Angle TFT LCD Display with MicroSD - ST7789: https://www.adafruit.com/product/3787
 3) Kalih Box Crystal Navy Switches: https://kbdfans.com/products/kailh-box-crystal-navy-clicky-switches
+4) PCB all files needed are located here https://github.com/Blevene/Labscon-Badge-2022/tree/main/LabsCon2022badge_V2
+5) Nylon M2.5 Standoffs
 
 Optional Parts:
 
